@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ShortenUrlFormComponent } from './components/shortenUrlForm/shorten-url-form.component';
+import { UrlService } from './services/url.service';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { ShortenUrlFormComponent } from './components/shortenUrlForm/shorten-url
     ShortenUrlFormComponent,
   ],
   imports: [BrowserModule],
-  providers: [],
+  providers: [UrlService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

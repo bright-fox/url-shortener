@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UrlService } from '../../services/url.service';
 
 @Component({
   selector: 'url-shortener-shorten-url-form',
@@ -6,7 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./shorten-url-form.component.css'],
 })
 export class ShortenUrlFormComponent {
+  constructor(private urlService: UrlService) {}
+
   shortenUrl() {
+    this.urlService.shortenUrl();
     console.log('Shorten URL');
   }
 }
