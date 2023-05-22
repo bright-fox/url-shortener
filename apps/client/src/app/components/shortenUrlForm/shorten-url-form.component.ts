@@ -5,4 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './shorten-url-form.component.html',
   styleUrls: ['./shorten-url-form.component.css'],
 })
-export class ShortenUrlFormComponent {}
+export class ShortenUrlFormComponent {
+  shortenUrl() {
+    console.log('Shorten URL');
+  }
+}
