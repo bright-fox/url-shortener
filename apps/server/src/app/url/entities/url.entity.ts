@@ -1,5 +1,5 @@
 import { UrlMapping } from '@url-shortener/server-interfaces';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Url implements UrlMapping {
@@ -9,6 +9,7 @@ export class Url implements UrlMapping {
   @Column({ type: 'varchar', length: 255 })
   fullUrl: string;
 
+  @Index({ unique: true })
   @Column({ type: 'varchar', length: 255 })
   shortUrl: string;
 
