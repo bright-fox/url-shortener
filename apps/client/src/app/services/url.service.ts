@@ -14,4 +14,8 @@ export class UrlService {
       fullUrl,
     });
   }
+
+  getFullUrl(shortUrl: string): Observable<Pick<UrlMapping, 'fullUrl'>> {
+    return this.http.get<Pick<UrlMapping, 'fullUrl'>>(`/api/url/${shortUrl}`);
+  }
 }

@@ -20,7 +20,7 @@ export class UrlController {
   }
 
   @Get(':shortUrl')
-  async findOne(@Param('shortUrl') shortUrl: string, @Res() res) {
+  async findOne(@Param('shortUrl') shortUrl: string) {
     const urlMapping = await this.urlService.findOne(shortUrl);
     if (!urlMapping) {
       throw new NotFoundException(
@@ -28,6 +28,6 @@ export class UrlController {
       );
     }
 
-    return res.redirect(urlMapping.fullUrl);
+    return { fullUrl: urlMapping.fullUrl };
   }
 }
