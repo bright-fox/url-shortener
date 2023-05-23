@@ -2,17 +2,17 @@ import { Component } from '@angular/core';
 import { UrlService } from '../../services/url.service';
 
 @Component({
-  selector: 'url-shortener-shorten-url',
-  templateUrl: './shorten-url.component.html',
-  styleUrls: ['./shorten-url.component.css'],
+  selector: 'url-shortener-url-shortener',
+  templateUrl: './url-shortener.component.html',
+  styleUrls: ['./url-shortener.component.css'],
 })
-export class ShortenUrlComponent {
+export class UrlShortenerComponent {
   fullUrl = '';
   shortUrl = '';
 
   constructor(private urlService: UrlService) {}
 
-  emptyShortUrl(_: string) {
+  emptyShortUrl(_: any) {
     this.shortUrl = '';
   }
 
