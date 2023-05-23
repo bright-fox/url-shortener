@@ -11,8 +11,8 @@ export class UrlController {
     return this.urlService.create(createUrlDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.urlService.findOne(+id);
-  }
+  //   @Get(':id')
+  //   findOne(@Param('id') id: string) {
+  //     return this.urlService.findOne(+id);
+  //   }
 }

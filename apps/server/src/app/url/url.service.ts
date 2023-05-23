@@ -5,6 +5,7 @@ import { Url } from './entities/url.entity';
 import { Repository } from 'typeorm';
 import moment from 'moment';
 import { nanoid } from 'nanoid';
+import { UrlMapping } from '@url-shortener/server-interfaces';
 
 @Injectable()
 export class UrlService {
@@ -13,7 +14,17 @@ export class UrlService {
   @InjectRepository(Url)
   private urlRepo: Repository<Url>;
 
-  create(createUrlDto: CreateUrlDto) {
+  async create(
+    createUrlDto: CreateUrlDto
+  ): Promise<Pick<UrlMapping, 'shortUrl'>> {
+    const { fullUrl } = createUrlDto;
+    const existingUrlMapping = await this.urlRepo.findOne({
+      where: { fullUrl },
+    });
+    if (existingUrlMapping) {
+      return { shortUrl: existingUrlMapping.shortUrl };
+    }
+
     const expirationDate = moment(new Date())
       .add(this.EXPIRATION_TIME_MIN, 'm')
       .toDate();
@@ -22,7 +33,8 @@ export class UrlService {
       shortUrl: nanoid(),
       expiresAt: expirationDate,
     });
-    return this.urlRepo.save(urlMapping);
+    await this.urlRepo.save(urlMapping);
+    return { shortUrl: urlMapping.shortUrl };
   }
 
   //   findOne(shortUrl: string) {}

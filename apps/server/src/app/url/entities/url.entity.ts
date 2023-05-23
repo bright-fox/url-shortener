@@ -6,6 +6,7 @@ export class Url implements UrlMapping {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Index()
   @Column({ type: 'varchar', length: 255 })
   fullUrl: string;
 
