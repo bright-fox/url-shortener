@@ -5,7 +5,6 @@ import {
   Body,
   Param,
   NotFoundException,
-  Redirect,
   Res,
 } from '@nestjs/common';
 import { UrlService } from './url.service';
