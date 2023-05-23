@@ -1,19 +1,24 @@
-<form (ngSubmit)="shortenUrl()">
-  <label for="url">Type in your URL</label>
-  <input
-    type="text"
-    name="url"
-    [(ngModel)]="fullUrl"
-    (ngModelChange)="emptyShortUrl($event)"
-    id="url"
-    placeholder="http://localhost:3000"
-  />
-  <button type="submit">Shorten URL</button>
-</form>
-
-<ng-template [ngIf]="shortUrl">
+<div class="container">
   <div>
-    Your shortened URL is:
-    <a [routerLink]="[shortUrl]">http://localhost:3000/{{ shortUrl }}</a>
+    <form (ngSubmit)="shortenUrl()" class="url-form">
+      <label for="url">Type in your URL</label>
+      <input
+        type="text"
+        name="url"
+        [(ngModel)]="fullUrl"
+        (ngModelChange)="emptyShortUrl($event)"
+        id="url"
+        placeholder="http://localhost:3000"
+      />
+      <button type="submit">Shorten URL</button>
+    </form>
+
+    <ng-template [ngIf]="shortUrl">
+      <div class="url-text">
+        Congratulations! 🚀<br />
+        Your shortened URL is:
+        <a [routerLink]="[shortUrl]">http://localhost:3000/{{ shortUrl }}</a>
+      </div>
+    </ng-template>
   </div>
-</ng-template>
+</div>
