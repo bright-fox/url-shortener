@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  NotFoundException,
+  Redirect,
+  Res,
+} from '@nestjs/common';
 import { UrlService } from './url.service';
 import { CreateUrlDto } from './dto/create-url.dto';
 
@@ -11,8 +20,15 @@ export class UrlController {
     return this.urlService.create(createUrlDto);
   }
 
-  //   @Get(':id')
-  //   findOne(@Param('id') id: string) {
-  //     return this.urlService.findOne(+id);
-  //   }
+  @Get(':shortUrl')
+  async findOne(@Param('shortUrl') shortUrl: string, @Res() res) {
+    const urlMapping = await this.urlService.findOne(shortUrl);
+    if (!urlMapping) {
+      throw new NotFoundException(
+        `No article found with the short ID ${shortUrl}`
+      );
+    }
+
+    return res.redirect(urlMapping.fullUrl);
+  }
 }

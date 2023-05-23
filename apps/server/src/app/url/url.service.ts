@@ -37,5 +37,9 @@ export class UrlService {
     return { shortUrl: urlMapping.shortUrl };
   }
 
-  //   findOne(shortUrl: string) {}
+  findOne(shortUrl: string) {
+    return this.urlRepo.findOne({
+      where: { shortUrl },
+    });
+  }
 }
