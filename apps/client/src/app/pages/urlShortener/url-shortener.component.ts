@@ -19,7 +19,6 @@ export class UrlShortenerComponent {
   shortenUrl() {
     this.urlService.shortenUrl(this.fullUrl).subscribe((urlMapping) => {
       this.shortUrl = urlMapping.shortUrl;
-      console.log(this.shortUrl);
     });
   }
 }

@@ -10,3 +10,10 @@
   />
   <button type="submit">Shorten URL</button>
 </form>
+
+<ng-template [ngIf]="shortUrl">
+  <div>
+    Your shortened URL is:
+    <a [routerLink]="[shortUrl]">http://localhost:3000/{{ shortUrl }}</a>
+  </div>
+</ng-template>
