@@ -1,13 +1,10 @@
-import { getGreeting } from '../support/app.po';
-
 describe('client', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
-
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome client');
+  // Custom command example, see `../support/commands.ts` file
+  it('should type a URL and get a short URL', () => {
+    cy.get('#url').type('https://youtube.com');
+    cy.get('button[type="submit"]').click();
+    cy.get('.url-text').should('exist');
   });
 });
