@@ -2,6 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UrlController } from './url.controller';
 import { UrlService } from './url.service';
 
+jest.mock('./url.service');
+
 describe('UrlController', () => {
   let controller: UrlController;
 
