@@ -1,5 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UrlRedirectComponent } from './url-redirect.component';
+import { UrlService } from '../../services/url.service';
+import { RouterTestingModule } from '@angular/router/testing';
+
+jest.mock('../../services/url.service');
 
 describe('UrlRedirectComponent', () => {
   let component: UrlRedirectComponent;
@@ -7,6 +11,8 @@ describe('UrlRedirectComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
+      providers: [UrlService],
       declarations: [UrlRedirectComponent],
     }).compileComponents();
 
