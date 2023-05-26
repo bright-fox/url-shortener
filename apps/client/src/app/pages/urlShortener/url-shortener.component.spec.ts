@@ -1,5 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UrlShortenerComponent } from './url-shortener.component';
+import { UrlService } from '../../services/url.service';
+import { FormsModule } from '@angular/forms';
+
+jest.mock('../../services/url.service');
 
 describe('UrlShortenerComponent', () => {
   let component: UrlShortenerComponent;
@@ -7,6 +11,8 @@ describe('UrlShortenerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [FormsModule],
+      providers: [UrlService],
       declarations: [UrlShortenerComponent],
     }).compileComponents();
 
